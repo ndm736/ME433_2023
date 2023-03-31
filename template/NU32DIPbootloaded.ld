@@ -1,6 +1,8 @@
+/*
 OUTPUT_FORMAT("elf32-tradlittlemips")
 OUTPUT_ARCH(pic32mx)
 ENTRY(_reset)
+*/
 /*
  * Provide for a minimum stack and heap size
  * - _min_stack_size - represents the minimum space that must be made
@@ -17,7 +19,10 @@ PROVIDE(_min_heap_size = 0) ;
 /*************************************************************************
  * Processor-specific object file.  Contains SFR definitions.
  *************************************************************************/
+/*
 INPUT("processor.o")
+*/
+OPTIONAL("processor.o")
 
 /*************************************************************************
  * For interrupt vector handling
