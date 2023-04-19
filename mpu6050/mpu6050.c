@@ -1,6 +1,7 @@
 #include "i2c_master_noint.h"
 #include "mpu6050.h"
 
+// Implementation by Dan Lynch
 // Source file for mpu6050.h.
 // Enables use of InvenSense MPU-6050 IMU
 // Datasheet: https://invensense.tdk.com/wp-content/uploads/2015/02/MPU-6000-Datasheet1.pdf
@@ -59,8 +60,7 @@ uint8_t whoami(void) {
 // The number of registers this function reads from is defined by IMU_ARRAY_LEN,
 // and this function does not check to see if the length of "data" equals
 // IMU_ARRAY_LEN or not.
-// This function is basically just a wrapper for burst_read_I2C1(), defined in
-// i2c_noint.{c,h}.
+// This function is basically just a wrapper for burst_read_I2C1()
 void burst_read_mpu6050(uint8_t * data) {
     burst_read_I2C1(IMU_ADDR,ACCEL_XOUT_H,data,IMU_ARRAY_LEN);
 }
@@ -96,7 +96,6 @@ int16_t get_zG(uint8_t * data) { // convert z-gyro LSB and MSB to int16_t
     return data[12]<<8 | data[13];
 }
 
-// TODO: test these functions!!!
 /*
  * Functions to convert int16_t representation of 16-bit IMU data (acceleration
  * in x, y, and z; temperature; gyro rates) to float representation
